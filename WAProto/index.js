@@ -39513,7 +39513,6 @@ $root.proto = (function() {
         Message.prototype.messageHistoryNotice = null;
 
         
-        Message.prototype.groupStatusMessageV2 = null;
         Message.prototype.groupStatusMessageV3 = null;
         
         Message.prototype.botForwardedMessage = null;
@@ -40038,11 +40037,6 @@ $root.proto = (function() {
         });
 
         
-        Object.defineProperty(Message.prototype, "_groupStatusMessageV2", {
-            get: $util.oneOfGetter($oneOfFields = ["groupStatusMessageV2"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
         Object.defineProperty(Message.prototype, "_groupStatusMessageV3", {
             get: $util.oneOfGetter($oneOfFields = ["groupStatusMessageV3"]),
             set: $util.oneOfSetter($oneOfFields)
@@ -40234,10 +40228,8 @@ $root.proto = (function() {
                 $root.proto.Message.FutureProofMessage.encode(message.questionMessage, writer.uint32(810).fork()).ldelim();
             if (message.messageHistoryNotice != null && Object.hasOwnProperty.call(message, "messageHistoryNotice"))
                 $root.proto.Message.MessageHistoryNotice.encode(message.messageHistoryNotice, writer.uint32(818).fork()).ldelim();
-            if (message.groupStatusMessageV2 != null && Object.hasOwnProperty.call(message, "groupStatusMessageV2"))
-                $root.proto.Message.FutureProofMessage.encode(message.groupStatusMessageV2, writer.uint32(826).fork()).ldelim();
             if (message.groupStatusMessageV3 != null && Object.hasOwnProperty.call(message, "groupStatusMessageV3"))
-                $root.proto.Message.FutureProofMessage.encode(message.groupStatusMessageV3, writer.uint32(834).fork()).ldelim(); 
+                $root.proto.Message.FutureProofMessage.encode(message.groupStatusMessageV3, writer.uint32(826).fork()).ldelim();
             if (message.botForwardedMessage != null && Object.hasOwnProperty.call(message, "botForwardedMessage"))
                 $root.proto.Message.FutureProofMessage.encode(message.botForwardedMessage, writer.uint32(834).fork()).ldelim();
             return writer;
@@ -40601,14 +40593,10 @@ $root.proto = (function() {
                         break;
                     }
                 case 103: {
-                        message.groupStatusMessageV2 = $root.proto.Message.FutureProofMessage.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 104: {
                         message.groupStatusMessageV3 = $root.proto.Message.FutureProofMessage.decode(reader, reader.uint32());
                         break;
                     }
-                case 105: {
+                case 104: {
                         message.botForwardedMessage = $root.proto.Message.FutureProofMessage.decode(reader, reader.uint32());
                         break;
                     }
@@ -41317,21 +41305,13 @@ $root.proto = (function() {
                         return "messageHistoryNotice." + error;
                 }
             }
-            if (message.groupStatusMessageV2 != null && message.hasOwnProperty("groupStatusMessageV2")) {
-                properties._groupStatusMessageV2 = 1;
-                {
-                    var error = $root.proto.Message.FutureProofMessage.verify(message.groupStatusMessageV2);
-                    if (error)
-                        return "groupStatusMessageV2." + error;
-                }
-            }
             if (message.groupStatusMessageV3 != null && message.hasOwnProperty("groupStatusMessageV3")) {
                 properties._groupStatusMessageV3 = 1;
-               {
+                {
                     var error = $root.proto.Message.FutureProofMessage.verify(message.groupStatusMessageV3);
                     if (error)
-                      return "groupStatusMessageV3." + error;
-               }
+                        return "groupStatusMessageV3." + error;
+                }
             }
             if (message.botForwardedMessage != null && message.hasOwnProperty("botForwardedMessage")) {
                 properties._botForwardedMessage = 1;
@@ -41776,15 +41756,10 @@ $root.proto = (function() {
                     throw TypeError(".proto.Message.messageHistoryNotice: object expected");
                 message.messageHistoryNotice = $root.proto.Message.MessageHistoryNotice.fromObject(object.messageHistoryNotice);
             }
-            if (object.groupStatusMessageV2 != null) {
-                if (typeof object.groupStatusMessageV2 !== "object")
-                    throw TypeError(".proto.Message.groupStatusMessageV2: object expected");
-                message.groupStatusMessageV2 = $root.proto.Message.FutureProofMessage.fromObject(object.groupStatusMessageV2);
-            }
             if (object.groupStatusMessageV3 != null) {
                 if (typeof object.groupStatusMessageV3 !== "object")
-                   throw TypeError(".proto.Message.groupStatusMessageV3: object expected");
-                 message.groupStatusMessageV3 = $root.proto.Message.FutureProofMessage.fromObject(object.groupStatusMessageV3);
+                    throw TypeError(".proto.Message.groupStatusMessageV3: object expected");
+                message.groupStatusMessageV3 = $root.proto.Message.FutureProofMessage.fromObject(object.groupStatusMessageV3);
             }
             if (object.botForwardedMessage != null) {
                 if (typeof object.botForwardedMessage !== "object")
@@ -42229,15 +42204,10 @@ $root.proto = (function() {
                 if (options.oneofs)
                     object._messageHistoryNotice = "messageHistoryNotice";
             }
-            if (message.groupStatusMessageV2 != null && message.hasOwnProperty("groupStatusMessageV2")) {
-                object.groupStatusMessageV2 = $root.proto.Message.FutureProofMessage.toObject(message.groupStatusMessageV2, options);
-                if (options.oneofs)
-                    object._groupStatusMessageV2 = "groupStatusMessageV2";
-            }
             if (message.groupStatusMessageV3 != null && message.hasOwnProperty("groupStatusMessageV3")) {
                 object.groupStatusMessageV3 = $root.proto.Message.FutureProofMessage.toObject(message.groupStatusMessageV3, options);
                 if (options.oneofs)
-                 object._groupStatusMessageV3 = "groupStatusMessageV3";
+                    object._groupStatusMessageV3 = "groupStatusMessageV3";
             }
             if (message.botForwardedMessage != null && message.hasOwnProperty("botForwardedMessage")) {
                 object.botForwardedMessage = $root.proto.Message.FutureProofMessage.toObject(message.botForwardedMessage, options);
