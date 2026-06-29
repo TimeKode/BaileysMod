@@ -1,10 +1,9 @@
 {
-    "name": "@TimeKode/Baileysmod",
+    "name": "@TimeKode/BaileysMod",
     "version": "8.0.2",
     "description": "WhatsApp API Modification By Time Van AshVyr",
     "keywords": [
         "whatsapp",
-        "laurine-wabot",
         "baileys",
         "whatsapp-web",
         "whatsapp-chat",
