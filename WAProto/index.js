@@ -73476,6 +73476,447 @@ $root.proto = (function() {
             return StatusNotificationMessage;
         })();
 
+        Message.StatusQuestionAnswerMessage = (function() {
+            function StatusQuestionAnswerMessage(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+            StatusQuestionAnswerMessage.prototype.key = null;
+            StatusQuestionAnswerMessage.prototype.text = null;
+            var $oneOfFields;
+            Object.defineProperty(StatusQuestionAnswerMessage.prototype, "_key", { get: $util.oneOfGetter($oneOfFields = ["key"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(StatusQuestionAnswerMessage.prototype, "_text", { get: $util.oneOfGetter($oneOfFields = ["text"]), set: $util.oneOfSetter($oneOfFields) });
+            StatusQuestionAnswerMessage.create = function create(properties) { return new StatusQuestionAnswerMessage(properties); };
+            StatusQuestionAnswerMessage.encode = function encode(message, writer) {
+                if (!writer) writer = $Writer.create();
+                if (message.key != null && Object.hasOwnProperty.call(message, "key"))
+                    $root.proto.MessageKey.encode(message.key, writer.uint32(10).fork()).ldelim();
+                if (message.text != null && Object.hasOwnProperty.call(message, "text"))
+                    writer.uint32(18).string(message.text);
+                return writer;
+            };
+            StatusQuestionAnswerMessage.encodeDelimited = function encodeDelimited(message, writer) { return this.encode(message, writer).ldelim(); };
+            StatusQuestionAnswerMessage.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.Message.StatusQuestionAnswerMessage();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: { message.key = $root.proto.MessageKey.decode(reader, reader.uint32()); break; }
+                    case 2: { message.text = reader.string(); break; }
+                    default: reader.skipType(tag & 7); break;
+                    }
+                }
+                return message;
+            };
+            StatusQuestionAnswerMessage.decodeDelimited = function decodeDelimited(reader) { if (!(reader instanceof $Reader)) reader = new $Reader(reader); return this.decode(reader, reader.uint32()); };
+            StatusQuestionAnswerMessage.verify = function verify(message) {
+                if (typeof message !== "object" || message === null) return "object expected";
+                var properties = {};
+                if (message.key != null && message.hasOwnProperty("key")) { properties._key = 1; var error = $root.proto.MessageKey.verify(message.key); if (error) return "key." + error; }
+                if (message.text != null && message.hasOwnProperty("text")) { properties._text = 1; if (!$util.isString(message.text)) return "text: string expected"; }
+                return null;
+            };
+            StatusQuestionAnswerMessage.fromObject = function fromObject(object) {
+                if (object instanceof $root.proto.Message.StatusQuestionAnswerMessage) return object;
+                var message = new $root.proto.Message.StatusQuestionAnswerMessage();
+                if (object.key != null) { if (typeof object.key !== "object") throw TypeError(".proto.Message.StatusQuestionAnswerMessage.key: object expected"); message.key = $root.proto.MessageKey.fromObject(object.key); }
+                if (object.text != null) message.text = String(object.text);
+                return message;
+            };
+            StatusQuestionAnswerMessage.toObject = function toObject(message, options) {
+                if (!options) options = {};
+                var object = {};
+                if (message.key != null && message.hasOwnProperty("key")) { object.key = $root.proto.MessageKey.toObject(message.key, options); if (options.oneofs) object._key = "key"; }
+                if (message.text != null && message.hasOwnProperty("text")) { object.text = message.text; if (options.oneofs) object._text = "text"; }
+                return object;
+            };
+            StatusQuestionAnswerMessage.prototype.toJSON = function toJSON() { return this.constructor.toObject(this, $protobuf.util.toJSONOptions); };
+            StatusQuestionAnswerMessage.getTypeUrl = function getTypeUrl(typeUrlPrefix) { if (typeUrlPrefix === undefined) { typeUrlPrefix = "type.googleapis.com"; } return typeUrlPrefix + "/proto.Message.StatusQuestionAnswerMessage"; };
+            return StatusQuestionAnswerMessage;
+        })();
+
+        Message.StatusQuotedMessage = (function() {
+            function StatusQuotedMessage(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+            StatusQuotedMessage.prototype.type = null;
+            StatusQuotedMessage.prototype.text = null;
+            StatusQuotedMessage.prototype.thumbnail = null;
+            StatusQuotedMessage.prototype.originalStatusId = null;
+            var $oneOfFields;
+            Object.defineProperty(StatusQuotedMessage.prototype, "_type", { get: $util.oneOfGetter($oneOfFields = ["type"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(StatusQuotedMessage.prototype, "_text", { get: $util.oneOfGetter($oneOfFields = ["text"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(StatusQuotedMessage.prototype, "_thumbnail", { get: $util.oneOfGetter($oneOfFields = ["thumbnail"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(StatusQuotedMessage.prototype, "_originalStatusId", { get: $util.oneOfGetter($oneOfFields = ["originalStatusId"]), set: $util.oneOfSetter($oneOfFields) });
+            StatusQuotedMessage.create = function create(properties) { return new StatusQuotedMessage(properties); };
+            StatusQuotedMessage.encode = function encode(message, writer) {
+                if (!writer) writer = $Writer.create();
+                if (message.type != null && Object.hasOwnProperty.call(message, "type")) writer.uint32(8).int32(message.type);
+                if (message.text != null && Object.hasOwnProperty.call(message, "text")) writer.uint32(18).string(message.text);
+                if (message.thumbnail != null && Object.hasOwnProperty.call(message, "thumbnail")) writer.uint32(26).bytes(message.thumbnail);
+                if (message.originalStatusId != null && Object.hasOwnProperty.call(message, "originalStatusId"))
+                    $root.proto.MessageKey.encode(message.originalStatusId, writer.uint32(34).fork()).ldelim();
+                return writer;
+            };
+            StatusQuotedMessage.encodeDelimited = function encodeDelimited(message, writer) { return this.encode(message, writer).ldelim(); };
+            StatusQuotedMessage.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.Message.StatusQuotedMessage();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: { message.type = reader.int32(); break; }
+                    case 2: { message.text = reader.string(); break; }
+                    case 3: { message.thumbnail = reader.bytes(); break; }
+                    case 4: { message.originalStatusId = $root.proto.MessageKey.decode(reader, reader.uint32()); break; }
+                    default: reader.skipType(tag & 7); break;
+                    }
+                }
+                return message;
+            };
+            StatusQuotedMessage.decodeDelimited = function decodeDelimited(reader) { if (!(reader instanceof $Reader)) reader = new $Reader(reader); return this.decode(reader, reader.uint32()); };
+            StatusQuotedMessage.verify = function verify(message) {
+                if (typeof message !== "object" || message === null) return "object expected";
+                var properties = {};
+                if (message.type != null && message.hasOwnProperty("type")) { properties._type = 1; switch (message.type) { default: return "type: enum value expected"; case 1: break; } }
+                if (message.text != null && message.hasOwnProperty("text")) { properties._text = 1; if (!$util.isString(message.text)) return "text: string expected"; }
+                if (message.thumbnail != null && message.hasOwnProperty("thumbnail")) { properties._thumbnail = 1; if (!(message.thumbnail && typeof message.thumbnail.length === "number" || $util.isString(message.thumbnail))) return "thumbnail: buffer expected"; }
+                if (message.originalStatusId != null && message.hasOwnProperty("originalStatusId")) { properties._originalStatusId = 1; var error = $root.proto.MessageKey.verify(message.originalStatusId); if (error) return "originalStatusId." + error; }
+                return null;
+            };
+            StatusQuotedMessage.fromObject = function fromObject(object) {
+                if (object instanceof $root.proto.Message.StatusQuotedMessage) return object;
+                var message = new $root.proto.Message.StatusQuotedMessage();
+                switch (object.type) { default: if (typeof object.type === "number") { message.type = object.type; break; } break; case "QUESTION_ANSWER": case 1: message.type = 1; break; }
+                if (object.text != null) message.text = String(object.text);
+                if (object.thumbnail != null) { if (typeof object.thumbnail === "string") $util.base64.decode(object.thumbnail, message.thumbnail = $util.newBuffer($util.base64.length(object.thumbnail)), 0); else if (object.thumbnail.length >= 0) message.thumbnail = object.thumbnail; }
+                if (object.originalStatusId != null) { if (typeof object.originalStatusId !== "object") throw TypeError(".proto.Message.StatusQuotedMessage.originalStatusId: object expected"); message.originalStatusId = $root.proto.MessageKey.fromObject(object.originalStatusId); }
+                return message;
+            };
+            StatusQuotedMessage.toObject = function toObject(message, options) {
+                if (!options) options = {};
+                var object = {};
+                if (message.type != null && message.hasOwnProperty("type")) { object.type = options.enums === String ? $root.proto.Message.StatusQuotedMessage.StatusQuotedMessageType[message.type] === undefined ? message.type : $root.proto.Message.StatusQuotedMessage.StatusQuotedMessageType[message.type] : message.type; if (options.oneofs) object._type = "type"; }
+                if (message.text != null && message.hasOwnProperty("text")) { object.text = message.text; if (options.oneofs) object._text = "text"; }
+                if (message.thumbnail != null && message.hasOwnProperty("thumbnail")) { object.thumbnail = options.bytes === String ? $util.base64.encode(message.thumbnail, 0, message.thumbnail.length) : options.bytes === Array ? Array.prototype.slice.call(message.thumbnail) : message.thumbnail; if (options.oneofs) object._thumbnail = "thumbnail"; }
+                if (message.originalStatusId != null && message.hasOwnProperty("originalStatusId")) { object.originalStatusId = $root.proto.MessageKey.toObject(message.originalStatusId, options); if (options.oneofs) object._originalStatusId = "originalStatusId"; }
+                return object;
+            };
+            StatusQuotedMessage.prototype.toJSON = function toJSON() { return this.constructor.toObject(this, $protobuf.util.toJSONOptions); };
+            StatusQuotedMessage.getTypeUrl = function getTypeUrl(typeUrlPrefix) { if (typeUrlPrefix === undefined) { typeUrlPrefix = "type.googleapis.com"; } return typeUrlPrefix + "/proto.Message.StatusQuotedMessage"; };
+            StatusQuotedMessage.StatusQuotedMessageType = (function() { var valuesById = {}, values = Object.create(valuesById); values[valuesById[1] = "QUESTION_ANSWER"] = 1; return values; })();
+            return StatusQuotedMessage;
+        })();
+
+        Message.StatusStickerInteractionMessage = (function() {
+            function StatusStickerInteractionMessage(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+            StatusStickerInteractionMessage.prototype.key = null;
+            StatusStickerInteractionMessage.prototype.stickerKey = null;
+            StatusStickerInteractionMessage.prototype.type = null;
+            var $oneOfFields;
+            Object.defineProperty(StatusStickerInteractionMessage.prototype, "_key", { get: $util.oneOfGetter($oneOfFields = ["key"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(StatusStickerInteractionMessage.prototype, "_stickerKey", { get: $util.oneOfGetter($oneOfFields = ["stickerKey"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(StatusStickerInteractionMessage.prototype, "_type", { get: $util.oneOfGetter($oneOfFields = ["type"]), set: $util.oneOfSetter($oneOfFields) });
+            StatusStickerInteractionMessage.create = function create(properties) { return new StatusStickerInteractionMessage(properties); };
+            StatusStickerInteractionMessage.encode = function encode(message, writer) {
+                if (!writer) writer = $Writer.create();
+                if (message.key != null && Object.hasOwnProperty.call(message, "key")) $root.proto.MessageKey.encode(message.key, writer.uint32(10).fork()).ldelim();
+                if (message.stickerKey != null && Object.hasOwnProperty.call(message, "stickerKey")) writer.uint32(18).string(message.stickerKey);
+                if (message.type != null && Object.hasOwnProperty.call(message, "type")) writer.uint32(24).int32(message.type);
+                return writer;
+            };
+            StatusStickerInteractionMessage.encodeDelimited = function encodeDelimited(message, writer) { return this.encode(message, writer).ldelim(); };
+            StatusStickerInteractionMessage.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.Message.StatusStickerInteractionMessage();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: { message.key = $root.proto.MessageKey.decode(reader, reader.uint32()); break; }
+                    case 2: { message.stickerKey = reader.string(); break; }
+                    case 3: { message.type = reader.int32(); break; }
+                    default: reader.skipType(tag & 7); break;
+                    }
+                }
+                return message;
+            };
+            StatusStickerInteractionMessage.decodeDelimited = function decodeDelimited(reader) { if (!(reader instanceof $Reader)) reader = new $Reader(reader); return this.decode(reader, reader.uint32()); };
+            StatusStickerInteractionMessage.verify = function verify(message) {
+                if (typeof message !== "object" || message === null) return "object expected";
+                var properties = {};
+                if (message.key != null && message.hasOwnProperty("key")) { properties._key = 1; var error = $root.proto.MessageKey.verify(message.key); if (error) return "key." + error; }
+                if (message.stickerKey != null && message.hasOwnProperty("stickerKey")) { properties._stickerKey = 1; if (!$util.isString(message.stickerKey)) return "stickerKey: string expected"; }
+                if (message.type != null && message.hasOwnProperty("type")) { properties._type = 1; switch (message.type) { default: return "type: enum value expected"; case 0: case 1: break; } }
+                return null;
+            };
+            StatusStickerInteractionMessage.fromObject = function fromObject(object) {
+                if (object instanceof $root.proto.Message.StatusStickerInteractionMessage) return object;
+                var message = new $root.proto.Message.StatusStickerInteractionMessage();
+                if (object.key != null) { if (typeof object.key !== "object") throw TypeError(".proto.Message.StatusStickerInteractionMessage.key: object expected"); message.key = $root.proto.MessageKey.fromObject(object.key); }
+                if (object.stickerKey != null) message.stickerKey = String(object.stickerKey);
+                switch (object.type) { default: if (typeof object.type === "number") { message.type = object.type; break; } break; case "UNKNOWN": case 0: message.type = 0; break; case "REACTION": case 1: message.type = 1; break; }
+                return message;
+            };
+            StatusStickerInteractionMessage.toObject = function toObject(message, options) {
+                if (!options) options = {};
+                var object = {};
+                if (message.key != null && message.hasOwnProperty("key")) { object.key = $root.proto.MessageKey.toObject(message.key, options); if (options.oneofs) object._key = "key"; }
+                if (message.stickerKey != null && message.hasOwnProperty("stickerKey")) { object.stickerKey = message.stickerKey; if (options.oneofs) object._stickerKey = "stickerKey"; }
+                if (message.type != null && message.hasOwnProperty("type")) { object.type = options.enums === String ? $root.proto.Message.StatusStickerInteractionMessage.StatusStickerType[message.type] === undefined ? message.type : $root.proto.Message.StatusStickerInteractionMessage.StatusStickerType[message.type] : message.type; if (options.oneofs) object._type = "type"; }
+                return object;
+            };
+            StatusStickerInteractionMessage.prototype.toJSON = function toJSON() { return this.constructor.toObject(this, $protobuf.util.toJSONOptions); };
+            StatusStickerInteractionMessage.getTypeUrl = function getTypeUrl(typeUrlPrefix) { if (typeUrlPrefix === undefined) { typeUrlPrefix = "type.googleapis.com"; } return typeUrlPrefix + "/proto.Message.StatusStickerInteractionMessage"; };
+            StatusStickerInteractionMessage.StatusStickerType = (function() { var valuesById = {}, values = Object.create(valuesById); values[valuesById[0] = "UNKNOWN"] = 0; values[valuesById[1] = "REACTION"] = 1; return values; })();
+            return StatusStickerInteractionMessage;
+        })();
+
+        Message.QuestionResponseMessage = (function() {
+            function QuestionResponseMessage(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+            QuestionResponseMessage.prototype.key = null;
+            QuestionResponseMessage.prototype.text = null;
+            var $oneOfFields;
+            Object.defineProperty(QuestionResponseMessage.prototype, "_key", { get: $util.oneOfGetter($oneOfFields = ["key"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(QuestionResponseMessage.prototype, "_text", { get: $util.oneOfGetter($oneOfFields = ["text"]), set: $util.oneOfSetter($oneOfFields) });
+            QuestionResponseMessage.create = function create(properties) { return new QuestionResponseMessage(properties); };
+            QuestionResponseMessage.encode = function encode(message, writer) {
+                if (!writer) writer = $Writer.create();
+                if (message.key != null && Object.hasOwnProperty.call(message, "key")) $root.proto.MessageKey.encode(message.key, writer.uint32(10).fork()).ldelim();
+                if (message.text != null && Object.hasOwnProperty.call(message, "text")) writer.uint32(18).string(message.text);
+                return writer;
+            };
+            QuestionResponseMessage.encodeDelimited = function encodeDelimited(message, writer) { return this.encode(message, writer).ldelim(); };
+            QuestionResponseMessage.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.Message.QuestionResponseMessage();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: { message.key = $root.proto.MessageKey.decode(reader, reader.uint32()); break; }
+                    case 2: { message.text = reader.string(); break; }
+                    default: reader.skipType(tag & 7); break;
+                    }
+                }
+                return message;
+            };
+            QuestionResponseMessage.decodeDelimited = function decodeDelimited(reader) { if (!(reader instanceof $Reader)) reader = new $Reader(reader); return this.decode(reader, reader.uint32()); };
+            QuestionResponseMessage.verify = function verify(message) {
+                if (typeof message !== "object" || message === null) return "object expected";
+                var properties = {};
+                if (message.key != null && message.hasOwnProperty("key")) { properties._key = 1; var error = $root.proto.MessageKey.verify(message.key); if (error) return "key." + error; }
+                if (message.text != null && message.hasOwnProperty("text")) { properties._text = 1; if (!$util.isString(message.text)) return "text: string expected"; }
+                return null;
+            };
+            QuestionResponseMessage.fromObject = function fromObject(object) {
+                if (object instanceof $root.proto.Message.QuestionResponseMessage) return object;
+                var message = new $root.proto.Message.QuestionResponseMessage();
+                if (object.key != null) { if (typeof object.key !== "object") throw TypeError(".proto.Message.QuestionResponseMessage.key: object expected"); message.key = $root.proto.MessageKey.fromObject(object.key); }
+                if (object.text != null) message.text = String(object.text);
+                return message;
+            };
+            QuestionResponseMessage.toObject = function toObject(message, options) {
+                if (!options) options = {};
+                var object = {};
+                if (message.key != null && message.hasOwnProperty("key")) { object.key = $root.proto.MessageKey.toObject(message.key, options); if (options.oneofs) object._key = "key"; }
+                if (message.text != null && message.hasOwnProperty("text")) { object.text = message.text; if (options.oneofs) object._text = "text"; }
+                return object;
+            };
+            QuestionResponseMessage.prototype.toJSON = function toJSON() { return this.constructor.toObject(this, $protobuf.util.toJSONOptions); };
+            QuestionResponseMessage.getTypeUrl = function getTypeUrl(typeUrlPrefix) { if (typeUrlPrefix === undefined) { typeUrlPrefix = "type.googleapis.com"; } return typeUrlPrefix + "/proto.Message.QuestionResponseMessage"; };
+            return QuestionResponseMessage;
+        })();
+
+        Message.PollAddOptionMessage = (function() {
+            function PollAddOptionMessage(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+            PollAddOptionMessage.prototype.pollCreationMessageKey = null;
+            PollAddOptionMessage.prototype.addOption = null;
+            PollAddOptionMessage.prototype.metadata = null;
+            var $oneOfFields;
+            Object.defineProperty(PollAddOptionMessage.prototype, "_pollCreationMessageKey", { get: $util.oneOfGetter($oneOfFields = ["pollCreationMessageKey"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(PollAddOptionMessage.prototype, "_addOption", { get: $util.oneOfGetter($oneOfFields = ["addOption"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(PollAddOptionMessage.prototype, "_metadata", { get: $util.oneOfGetter($oneOfFields = ["metadata"]), set: $util.oneOfSetter($oneOfFields) });
+            PollAddOptionMessage.create = function create(properties) { return new PollAddOptionMessage(properties); };
+            PollAddOptionMessage.encode = function encode(message, writer) {
+                if (!writer) writer = $Writer.create();
+                if (message.pollCreationMessageKey != null && Object.hasOwnProperty.call(message, "pollCreationMessageKey")) $root.proto.MessageKey.encode(message.pollCreationMessageKey, writer.uint32(10).fork()).ldelim();
+                if (message.addOption != null && Object.hasOwnProperty.call(message, "addOption")) $root.proto.Message.PollCreationMessage.Option.encode(message.addOption, writer.uint32(18).fork()).ldelim();
+                if (message.metadata != null && Object.hasOwnProperty.call(message, "metadata")) $root.proto.Message.PollUpdateMessageMetadata.encode(message.metadata, writer.uint32(26).fork()).ldelim();
+                return writer;
+            };
+            PollAddOptionMessage.encodeDelimited = function encodeDelimited(message, writer) { return this.encode(message, writer).ldelim(); };
+            PollAddOptionMessage.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.Message.PollAddOptionMessage();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: { message.pollCreationMessageKey = $root.proto.MessageKey.decode(reader, reader.uint32()); break; }
+                    case 2: { message.addOption = $root.proto.Message.PollCreationMessage.Option.decode(reader, reader.uint32()); break; }
+                    case 3: { message.metadata = $root.proto.Message.PollUpdateMessageMetadata.decode(reader, reader.uint32()); break; }
+                    default: reader.skipType(tag & 7); break;
+                    }
+                }
+                return message;
+            };
+            PollAddOptionMessage.decodeDelimited = function decodeDelimited(reader) { if (!(reader instanceof $Reader)) reader = new $Reader(reader); return this.decode(reader, reader.uint32()); };
+            PollAddOptionMessage.verify = function verify(message) {
+                if (typeof message !== "object" || message === null) return "object expected";
+                var properties = {};
+                if (message.pollCreationMessageKey != null && message.hasOwnProperty("pollCreationMessageKey")) { properties._pollCreationMessageKey = 1; var error = $root.proto.MessageKey.verify(message.pollCreationMessageKey); if (error) return "pollCreationMessageKey." + error; }
+                if (message.addOption != null && message.hasOwnProperty("addOption")) { properties._addOption = 1; var error = $root.proto.Message.PollCreationMessage.Option.verify(message.addOption); if (error) return "addOption." + error; }
+                if (message.metadata != null && message.hasOwnProperty("metadata")) { properties._metadata = 1; var error = $root.proto.Message.PollUpdateMessageMetadata.verify(message.metadata); if (error) return "metadata." + error; }
+                return null;
+            };
+            PollAddOptionMessage.fromObject = function fromObject(object) {
+                if (object instanceof $root.proto.Message.PollAddOptionMessage) return object;
+                var message = new $root.proto.Message.PollAddOptionMessage();
+                if (object.pollCreationMessageKey != null) { if (typeof object.pollCreationMessageKey !== "object") throw TypeError(".proto.Message.PollAddOptionMessage.pollCreationMessageKey: object expected"); message.pollCreationMessageKey = $root.proto.MessageKey.fromObject(object.pollCreationMessageKey); }
+                if (object.addOption != null) { if (typeof object.addOption !== "object") throw TypeError(".proto.Message.PollAddOptionMessage.addOption: object expected"); message.addOption = $root.proto.Message.PollCreationMessage.Option.fromObject(object.addOption); }
+                if (object.metadata != null) { if (typeof object.metadata !== "object") throw TypeError(".proto.Message.PollAddOptionMessage.metadata: object expected"); message.metadata = $root.proto.Message.PollUpdateMessageMetadata.fromObject(object.metadata); }
+                return message;
+            };
+            PollAddOptionMessage.toObject = function toObject(message, options) {
+                if (!options) options = {};
+                var object = {};
+                if (message.pollCreationMessageKey != null && message.hasOwnProperty("pollCreationMessageKey")) { object.pollCreationMessageKey = $root.proto.MessageKey.toObject(message.pollCreationMessageKey, options); if (options.oneofs) object._pollCreationMessageKey = "pollCreationMessageKey"; }
+                if (message.addOption != null && message.hasOwnProperty("addOption")) { object.addOption = $root.proto.Message.PollCreationMessage.Option.toObject(message.addOption, options); if (options.oneofs) object._addOption = "addOption"; }
+                if (message.metadata != null && message.hasOwnProperty("metadata")) { object.metadata = $root.proto.Message.PollUpdateMessageMetadata.toObject(message.metadata, options); if (options.oneofs) object._metadata = "metadata"; }
+                return object;
+            };
+            PollAddOptionMessage.prototype.toJSON = function toJSON() { return this.constructor.toObject(this, $protobuf.util.toJSONOptions); };
+            PollAddOptionMessage.getTypeUrl = function getTypeUrl(typeUrlPrefix) { if (typeUrlPrefix === undefined) { typeUrlPrefix = "type.googleapis.com"; } return typeUrlPrefix + "/proto.Message.PollAddOptionMessage"; };
+            return PollAddOptionMessage;
+        })();
+
+        Message.EventInviteMessage = (function() {
+            function EventInviteMessage(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+            EventInviteMessage.prototype.contextInfo = null;
+            EventInviteMessage.prototype.eventId = null;
+            EventInviteMessage.prototype.eventTitle = null;
+            EventInviteMessage.prototype.jpegThumbnail = null;
+            EventInviteMessage.prototype.startTime = null;
+            EventInviteMessage.prototype.caption = null;
+            EventInviteMessage.prototype.isCanceled = null;
+            EventInviteMessage.prototype.endTime = null;
+            EventInviteMessage.prototype.callLink = null;
+            var $oneOfFields;
+            Object.defineProperty(EventInviteMessage.prototype, "_contextInfo", { get: $util.oneOfGetter($oneOfFields = ["contextInfo"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(EventInviteMessage.prototype, "_eventId", { get: $util.oneOfGetter($oneOfFields = ["eventId"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(EventInviteMessage.prototype, "_eventTitle", { get: $util.oneOfGetter($oneOfFields = ["eventTitle"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(EventInviteMessage.prototype, "_jpegThumbnail", { get: $util.oneOfGetter($oneOfFields = ["jpegThumbnail"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(EventInviteMessage.prototype, "_startTime", { get: $util.oneOfGetter($oneOfFields = ["startTime"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(EventInviteMessage.prototype, "_caption", { get: $util.oneOfGetter($oneOfFields = ["caption"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(EventInviteMessage.prototype, "_isCanceled", { get: $util.oneOfGetter($oneOfFields = ["isCanceled"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(EventInviteMessage.prototype, "_endTime", { get: $util.oneOfGetter($oneOfFields = ["endTime"]), set: $util.oneOfSetter($oneOfFields) });
+            Object.defineProperty(EventInviteMessage.prototype, "_callLink", { get: $util.oneOfGetter($oneOfFields = ["callLink"]), set: $util.oneOfSetter($oneOfFields) });
+            EventInviteMessage.create = function create(properties) { return new EventInviteMessage(properties); };
+            EventInviteMessage.encode = function encode(message, writer) {
+                if (!writer) writer = $Writer.create();
+                if (message.contextInfo != null && Object.hasOwnProperty.call(message, "contextInfo")) $root.proto.ContextInfo.encode(message.contextInfo, writer.uint32(10).fork()).ldelim();
+                if (message.eventId != null && Object.hasOwnProperty.call(message, "eventId")) writer.uint32(18).string(message.eventId);
+                if (message.eventTitle != null && Object.hasOwnProperty.call(message, "eventTitle")) writer.uint32(26).string(message.eventTitle);
+                if (message.jpegThumbnail != null && Object.hasOwnProperty.call(message, "jpegThumbnail")) writer.uint32(34).bytes(message.jpegThumbnail);
+                if (message.startTime != null && Object.hasOwnProperty.call(message, "startTime")) writer.uint32(40).int64(message.startTime);
+                if (message.caption != null && Object.hasOwnProperty.call(message, "caption")) writer.uint32(50).string(message.caption);
+                if (message.isCanceled != null && Object.hasOwnProperty.call(message, "isCanceled")) writer.uint32(56).bool(message.isCanceled);
+                if (message.endTime != null && Object.hasOwnProperty.call(message, "endTime")) writer.uint32(64).int64(message.endTime);
+                if (message.callLink != null && Object.hasOwnProperty.call(message, "callLink")) writer.uint32(74).string(message.callLink);
+                return writer;
+            };
+            EventInviteMessage.encodeDelimited = function encodeDelimited(message, writer) { return this.encode(message, writer).ldelim(); };
+            EventInviteMessage.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.Message.EventInviteMessage();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: { message.contextInfo = $root.proto.ContextInfo.decode(reader, reader.uint32()); break; }
+                    case 2: { message.eventId = reader.string(); break; }
+                    case 3: { message.eventTitle = reader.string(); break; }
+                    case 4: { message.jpegThumbnail = reader.bytes(); break; }
+                    case 5: { message.startTime = reader.int64(); break; }
+                    case 6: { message.caption = reader.string(); break; }
+                    case 7: { message.isCanceled = reader.bool(); break; }
+                    case 8: { message.endTime = reader.int64(); break; }
+                    case 9: { message.callLink = reader.string(); break; }
+                    default: reader.skipType(tag & 7); break;
+                    }
+                }
+                return message;
+            };
+            EventInviteMessage.decodeDelimited = function decodeDelimited(reader) { if (!(reader instanceof $Reader)) reader = new $Reader(reader); return this.decode(reader, reader.uint32()); };
+            EventInviteMessage.verify = function verify(message) {
+                if (typeof message !== "object" || message === null) return "object expected";
+                var properties = {};
+                if (message.contextInfo != null && message.hasOwnProperty("contextInfo")) { properties._contextInfo = 1; var error = $root.proto.ContextInfo.verify(message.contextInfo); if (error) return "contextInfo." + error; }
+                if (message.eventId != null && message.hasOwnProperty("eventId")) { properties._eventId = 1; if (!$util.isString(message.eventId)) return "eventId: string expected"; }
+                if (message.eventTitle != null && message.hasOwnProperty("eventTitle")) { properties._eventTitle = 1; if (!$util.isString(message.eventTitle)) return "eventTitle: string expected"; }
+                if (message.startTime != null && message.hasOwnProperty("startTime")) { properties._startTime = 1; if (!$util.isInteger(message.startTime) && !(message.startTime && $util.isInteger(message.startTime.low) && $util.isInteger(message.startTime.high))) return "startTime: integer|Long expected"; }
+                if (message.caption != null && message.hasOwnProperty("caption")) { properties._caption = 1; if (!$util.isString(message.caption)) return "caption: string expected"; }
+                if (message.isCanceled != null && message.hasOwnProperty("isCanceled")) { properties._isCanceled = 1; if (typeof message.isCanceled !== "boolean") return "isCanceled: boolean expected"; }
+                if (message.endTime != null && message.hasOwnProperty("endTime")) { properties._endTime = 1; if (!$util.isInteger(message.endTime) && !(message.endTime && $util.isInteger(message.endTime.low) && $util.isInteger(message.endTime.high))) return "endTime: integer|Long expected"; }
+                if (message.callLink != null && message.hasOwnProperty("callLink")) { properties._callLink = 1; if (!$util.isString(message.callLink)) return "callLink: string expected"; }
+                return null;
+            };
+            EventInviteMessage.fromObject = function fromObject(object) {
+                if (object instanceof $root.proto.Message.EventInviteMessage) return object;
+                var message = new $root.proto.Message.EventInviteMessage();
+                if (object.contextInfo != null) { if (typeof object.contextInfo !== "object") throw TypeError(".proto.Message.EventInviteMessage.contextInfo: object expected"); message.contextInfo = $root.proto.ContextInfo.fromObject(object.contextInfo); }
+                if (object.eventId != null) message.eventId = String(object.eventId);
+                if (object.eventTitle != null) message.eventTitle = String(object.eventTitle);
+                if (object.jpegThumbnail != null) { if (typeof object.jpegThumbnail === "string") $util.base64.decode(object.jpegThumbnail, message.jpegThumbnail = $util.newBuffer($util.base64.length(object.jpegThumbnail)), 0); else if (object.jpegThumbnail.length >= 0) message.jpegThumbnail = object.jpegThumbnail; }
+                if (object.startTime != null) message.startTime = typeof object.startTime === "number" ? object.startTime : new $util.LongBits(object.startTime.low >>> 0, object.startTime.high >>> 0).toNumber();
+                if (object.caption != null) message.caption = String(object.caption);
+                if (object.isCanceled != null) message.isCanceled = Boolean(object.isCanceled);
+                if (object.endTime != null) message.endTime = typeof object.endTime === "number" ? object.endTime : new $util.LongBits(object.endTime.low >>> 0, object.endTime.high >>> 0).toNumber();
+                if (object.callLink != null) message.callLink = String(object.callLink);
+                return message;
+            };
+            EventInviteMessage.toObject = function toObject(message, options) {
+                if (!options) options = {};
+                var object = {};
+                if (message.contextInfo != null && message.hasOwnProperty("contextInfo")) { object.contextInfo = $root.proto.ContextInfo.toObject(message.contextInfo, options); if (options.oneofs) object._contextInfo = "contextInfo"; }
+                if (message.eventId != null && message.hasOwnProperty("eventId")) { object.eventId = message.eventId; if (options.oneofs) object._eventId = "eventId"; }
+                if (message.eventTitle != null && message.hasOwnProperty("eventTitle")) { object.eventTitle = message.eventTitle; if (options.oneofs) object._eventTitle = "eventTitle"; }
+                if (message.jpegThumbnail != null && message.hasOwnProperty("jpegThumbnail")) { object.jpegThumbnail = options.bytes === String ? $util.base64.encode(message.jpegThumbnail, 0, message.jpegThumbnail.length) : options.bytes === Array ? Array.prototype.slice.call(message.jpegThumbnail) : message.jpegThumbnail; if (options.oneofs) object._jpegThumbnail = "jpegThumbnail"; }
+                if (message.startTime != null && message.hasOwnProperty("startTime")) { object.startTime = options.longs === String ? String(message.startTime) : options.longs === Number ? new $util.LongBits(message.startTime.low >>> 0, message.startTime.high >>> 0).toNumber() : message.startTime; if (options.oneofs) object._startTime = "startTime"; }
+                if (message.caption != null && message.hasOwnProperty("caption")) { object.caption = message.caption; if (options.oneofs) object._caption = "caption"; }
+                if (message.isCanceled != null && message.hasOwnProperty("isCanceled")) { object.isCanceled = message.isCanceled; if (options.oneofs) object._isCanceled = "isCanceled"; }
+                if (message.endTime != null && message.hasOwnProperty("endTime")) { object.endTime = options.longs === String ? String(message.endTime) : options.longs === Number ? new $util.LongBits(message.endTime.low >>> 0, message.endTime.high >>> 0).toNumber() : message.endTime; if (options.oneofs) object._endTime = "endTime"; }
+                if (message.callLink != null && message.hasOwnProperty("callLink")) { object.callLink = message.callLink; if (options.oneofs) object._callLink = "callLink"; }
+                return object;
+            };
+            EventInviteMessage.prototype.toJSON = function toJSON() { return this.constructor.toObject(this, $protobuf.util.toJSONOptions); };
+            EventInviteMessage.getTypeUrl = function getTypeUrl(typeUrlPrefix) { if (typeUrlPrefix === undefined) { typeUrlPrefix = "type.googleapis.com"; } return typeUrlPrefix + "/proto.Message.EventInviteMessage"; };
+            return EventInviteMessage;
+        })();
+
         Message.StickerMessage = (function() {
 
             
