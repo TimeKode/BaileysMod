@@ -39527,7 +39527,7 @@ $root.proto = (function() {
               
         Message.prototype.statusStickerInteractionMessage = null;
               
-        Message.prototype.pollCreationMessageV5 = null;
+        Message.prototype.pollCreationMessageV7 = null;
               
         Message.prototype.newsletterFollowerInviteMessageV2 = null;
               
@@ -40053,8 +40053,8 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
-        Object.defineProperty(Message.prototype, "_pollCreationMessageV5", {
-            get: $util.oneOfGetter($oneOfFields = ["pollCreationMessageV5"]),
+        Object.defineProperty(Message.prototype, "_pollCreationMessageV7", {
+            get: $util.oneOfGetter($oneOfFields = ["pollCreationMessageV7"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -40751,7 +40751,7 @@ $root.proto = (function() {
                         break;
                     }
                 case 111: {
-                        message.pollCreationMessageV5 = $root.proto.Message.PollCreationMessage.decode(reader, reader.uint32());
+                        message.pollCreationMessageV7 = $root.proto.Message.PollCreationMessage.decode(reader, reader.uint32());
                         break;
                     }
                 case 113: {
@@ -40808,9 +40808,6 @@ $root.proto = (function() {
                     }
                 case 127: {
                         message.rootSecretDistributeMessage = $root.proto.Message.RootSecretDistributeMessage.decode(reader, reader.uint32());
-                        break;
-                    }: {
-                        message.botForwardedMessage = $root.proto.Message.FutureProofMessage.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -41574,12 +41571,12 @@ $root.proto = (function() {
                         return "statusStickerInteractionMessage." + error;
                 }
             }
-            if (message.pollCreationMessageV5 != null && message.hasOwnProperty("pollCreationMessageV5")) {
-                properties._pollCreationMessageV5 = 1;
+            if (message.pollCreationMessageV7 != null && message.hasOwnProperty("pollCreationMessageV7")) {
+                properties._pollCreationMessageV7 = 1;
                 {
-                    var error = $root.proto.Message.PollCreationMessage.verify(message.pollCreationMessageV5);
+                    var error = $root.proto.Message.PollCreationMessage.verify(message.pollCreationMessageV7);
                     if (error)
-                        return "pollCreationMessageV5." + error;
+                        return "pollCreationMessageV7." + error;
                 }
             }
             if (message.newsletterFollowerInviteMessageV2 != null && message.hasOwnProperty("newsletterFollowerInviteMessageV2")) {
@@ -42164,10 +42161,10 @@ $root.proto = (function() {
                     throw TypeError(".proto.Message.statusStickerInteractionMessage: object expected");
                 message.statusStickerInteractionMessage = $root.proto.Message.StatusStickerInteractionMessage.fromObject(object.statusStickerInteractionMessage);
             }
-            if (object.pollCreationMessageV5 != null) {
-                if (typeof object.pollCreationMessageV5 !== "object")
-                    throw TypeError(".proto.Message.pollCreationMessageV5: object expected");
-                message.pollCreationMessageV5 = $root.proto.Message.PollCreationMessage.fromObject(object.pollCreationMessageV5);
+            if (object.pollCreationMessageV7 != null) {
+                if (typeof object.pollCreationMessageV7 !== "object")
+                    throw TypeError(".proto.Message.pollCreationMessageV7: object expected");
+                message.pollCreationMessageV7 = $root.proto.Message.PollCreationMessage.fromObject(object.pollCreationMessageV7);
             }
             if (object.newsletterFollowerInviteMessageV2 != null) {
                 if (typeof object.newsletterFollowerInviteMessageV2 !== "object")
@@ -42712,10 +42709,10 @@ $root.proto = (function() {
                 if (options.oneofs)
                     object._statusStickerInteractionMessage = "statusStickerInteractionMessage";
             }
-            if (message.pollCreationMessageV5 != null && message.hasOwnProperty("pollCreationMessageV5")) {
-                object.pollCreationMessageV5 = $root.proto.Message.PollCreationMessage.toObject(message.pollCreationMessageV5, options);
+            if (message.pollCreationMessageV7 != null && message.hasOwnProperty("pollCreationMessageV7")) {
+                object.pollCreationMessageV7 = $root.proto.Message.PollCreationMessage.toObject(message.pollCreationMessageV7, options);
                 if (options.oneofs)
-                    object._pollCreationMessageV5 = "pollCreationMessageV5";
+                    object._pollCreationMessageV7 = "pollCreationMessageV7";
             }
             if (message.newsletterFollowerInviteMessageV2 != null && message.hasOwnProperty("newsletterFollowerInviteMessageV2")) {
                 object.newsletterFollowerInviteMessageV2 = $root.proto.Message.NewsletterFollowerInviteMessage.toObject(message.newsletterFollowerInviteMessageV2, options);
