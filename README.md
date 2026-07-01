@@ -12,7 +12,7 @@
 
 | Tag | Field | Class | Status Handler |
 |-----|-------|-------|----------------|
-| 104 | `groupStatusMessageV3` | `FutureProofMessage` | ✅ `handleGroupStory` |
+| 104 | `groupStatusMessageV2` | `FutureProofMessage` | ✅ `handleGroupStory` |
 
 ---
 
