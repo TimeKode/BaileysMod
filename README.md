@@ -1,6 +1,7 @@
 # 📦 WAProto — Fitur Baru (Tag 96–127)
 > BaileysMod fork by @TimeKode
 > README Create By Claude Ai 
+
 > Proto source: WhatsApp Web `2.3000.1042381694`
 
 ---
